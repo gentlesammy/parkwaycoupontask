@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Boiled Octopus",
+      "price": 50,
+      "coverImage": "octopus.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Fried Tortoise",
+      "price": 20,
+      "coverImage": "tortoise.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Grilled Bacon",
+      "price": 10,
+      "coverImage": "bacon.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Jelly Pizza",
+      "price": 80,
+      "coverImage": "pizza.jpg"
+    }
+  ]
+}
