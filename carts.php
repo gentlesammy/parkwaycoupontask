@@ -25,9 +25,9 @@
 
                 <div class="form-group px-4">
                     <label for="" class="text-white pl-2">Coupon Code</label>
-                    <input type="text" name="" id="" class="form-control">
+                    <input type="text" name="couponcode" id="couponcode" class="form-control">
                     <small class="text-white-50 pl-2">Enter a Valid Code to reduce price</small>
-                    <input type="button" value="Validate"  class="btn btn-primary btn-sm mt-2">
+                    <input type="button" value="Validate"  class="btn btn-primary btn-sm mt-2" id="couponvalidator">
                 </div>
                 <hr/>
                 <div class="benefit px-4 pt-2">

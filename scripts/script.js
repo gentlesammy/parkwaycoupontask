@@ -42,10 +42,26 @@ const cartTotalCalc = async (discount = 0) => {
 
 //validate coupons,
 //TODO
+//check code in frontend using length : done
 // check if coupon exist
 // check if coupon is not outdated
 //check if coupon is still active
 //validate coupon cart Items requirement
 //validate totalprice requirement for coupon
 //if coupon condition is satisfied modify total price to reflect the coupon
-const validateCoupon = () => {};
+const couponvalidator = document.querySelector("#couponvalidator");
+couponvalidator.addEventListener("click", () => {
+  const couponCode = document.querySelector("#couponcode").value;
+  if (couponCode.length < 5) {
+    alert("Invalid Coupon code. Please enter the correct code and validate");
+  } else {
+    fetch("../process/couponvalidator.php", {
+      method: "POST",
+      body: JSON.stringify(couponCode),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    })
+      .then((response) => response.json())
+      .then((json) => {})
+      .catch((err) => console.log(err));
+  }
+});
