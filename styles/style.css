@@ -1,1 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 
+.productlist {
+  overflow: hidden;
+}
+
+.productlist .single {
+  padding: 10px;
+  background: #f3f3f3;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 0.1px solid white;
+}
+.productlist .single .pro-title {
+  flex: 2;
+}
+.productlist .single .img-container {
+  flex: 2;
+}
+
+.productlist .single .img-container img {
+  max-width: 100px;
+}
+
+.productlist .single .pro-price {
+  flex: 1;
+}
+
+/* summary section of the cart goes here */
+.benefit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.benefit p {
+  color: white;
+}
+
+.total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total p {
+  color: white;
+}
