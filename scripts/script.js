@@ -39,3 +39,13 @@ const cartTotalCalc = async (discount = 0) => {
   const priceCol = document.querySelector("#totalcost");
   priceCol.innerHTML = "$" + totalPrice;
 };
+
+//validate coupons,
+//TODO
+// check if coupon exist
+// check if coupon is not outdated
+//check if coupon is still active
+//validate coupon cart Items requirement
+//validate totalprice requirement for coupon
+//if coupon condition is satisfied modify total price to reflect the coupon
+const validateCoupon = () => {};
