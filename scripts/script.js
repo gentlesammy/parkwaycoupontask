@@ -35,6 +35,7 @@ const cartTotalCalc = async (discount = 0) => {
   for (let i = 0; i < products.products.length; i++) {
     totalPrice = totalPrice + products.products[i].price;
   }
+  //if discount is available, deduct discount
   const priceCol = document.querySelector("#totalcost");
   priceCol.innerHTML = "$" + totalPrice;
 };
