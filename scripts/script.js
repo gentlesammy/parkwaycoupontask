@@ -43,9 +43,9 @@ const cartTotalCalc = async (discount = 0) => {
 //validate coupons,
 //TODO
 //check code in frontend using length : done
-// check if coupon exist
-// check if coupon is not outdated
-//check if coupon is still active
+// check if coupon exist => to be done on the serverside :couponvalidator.php : done
+// check if coupon is not outdated  => to be done on the serverside :couponvalidator.php : done
+//check if coupon is still active  => to be done on the serverside :couponvalidator.php : done
 //validate coupon cart Items requirement
 //validate totalprice requirement for coupon
 //if coupon condition is satisfied modify total price to reflect the coupon
@@ -55,13 +55,24 @@ couponvalidator.addEventListener("click", () => {
   if (couponCode.length < 5) {
     alert("Invalid Coupon code. Please enter the correct code and validate");
   } else {
-    fetch("../process/couponvalidator.php", {
+    const couponInfo = {
+      couponCode,
+    };
+    fetch("./process/couponvalidator.php", {
       method: "POST",
-      body: JSON.stringify(couponCode),
+      body: JSON.stringify(couponInfo),
       headers: { "Content-type": "application/json; charset=UTF-8" },
     })
       .then((response) => response.json())
-      .then((json) => {})
-      .catch((err) => console.log(err));
+      .then((json) => {
+        if (json.code == 401) {
+          //coupon code does not exist or coupon code has expired or coupon code has been deactivated
+          alert(json.message);
+        } else {
+          //coupon code has not expired and has not be invalidated by admin
+          console.log(json);
+        }
+      })
+      .catch((err) => console.log(err.message));
   }
 });
