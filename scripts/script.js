@@ -46,7 +46,7 @@ const cartTotalCalc = async (discount = 0) => {
 // check if coupon exist => to be done on the serverside :couponvalidator.php : done
 // check if coupon is not outdated  => to be done on the serverside :couponvalidator.php : done
 //check if coupon is still active  => to be done on the serverside :couponvalidator.php : done
-//validate coupon cart Items requirement
+//validate coupon cart Items requirement: done
 //validate totalprice requirement for coupon
 //if coupon condition is satisfied modify total price to reflect the coupon
 const couponvalidator = document.querySelector("#couponvalidator");
@@ -70,7 +70,7 @@ couponvalidator.addEventListener("click", () => {
           alert(json.message);
         } else {
           //coupon code has not expired and has not be invalidated by admin
-          const priceCheckOkay = cartTotalPriceValid(
+          const priceCheckOkay = await cartTotalPriceValid(
             json.coupon_details.cou_priceconstraint
           );
           const cartCheckOkay = await cartTotalItemValid(
@@ -84,6 +84,7 @@ couponvalidator.addEventListener("click", () => {
               type: json.coupon_details.cou_type,
               value: json.coupon_details.cou_value,
               cartCheckOkay,
+              cartTotalPriceValid,
             });
           } else {
             //return error message, condition for coupon not met
@@ -96,8 +97,18 @@ couponvalidator.addEventListener("click", () => {
 });
 
 //coupontotal price constraint checker formula
-const cartTotalPriceValid = () => {
-  return false;
+const cartTotalPriceValid = async (cou_priceconstraint) => {
+  const products = await getAllProducts();
+  var totalPrice = 0;
+  for (let i = 0; i < products.products.length; i++) {
+    totalPrice = totalPrice + products.products[i].price;
+  }
+  if (totalPrice >= parseInt(cou_priceconstraint)) {
+    return true;
+  } else {
+    console.log(totalPrice, cou_priceconstraint);
+    return false;
+  }
 };
 
 //coupon cart quantity check
