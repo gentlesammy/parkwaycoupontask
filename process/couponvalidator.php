@@ -38,22 +38,8 @@ if(isset($_POST["couponCode"])){
                         "coupon_details" => $check_result
                         
                     ];
-
-
         }
-
-
-
-
-
-
-        
-
-
-
-
     }
-
 
     //final result to be sent
     echo (json_encode($result)); 

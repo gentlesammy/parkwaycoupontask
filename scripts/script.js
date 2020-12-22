@@ -47,7 +47,7 @@ const cartTotalCalc = async (discount = 0) => {
 // check if coupon is not outdated  => to be done on the serverside :couponvalidator.php : done
 //check if coupon is still active  => to be done on the serverside :couponvalidator.php : done
 //validate coupon cart Items requirement: done
-//validate totalprice requirement for coupon
+//validate totalprice requirement for coupon: done
 //if coupon condition is satisfied modify total price to reflect the coupon
 const couponvalidator = document.querySelector("#couponvalidator");
 couponvalidator.addEventListener("click", () => {
@@ -80,12 +80,9 @@ couponvalidator.addEventListener("click", () => {
           //check if both conditions are met
           if (priceCheckOkay && cartCheckOkay) {
             //both are okay, deduct from total
-            console.log({
-              type: json.coupon_details.cou_type,
-              value: json.coupon_details.cou_value,
-              cartCheckOkay,
-              cartTotalPriceValid,
-            });
+                //- determine if the benefit type is in percentage or amount
+                //make the calculation
+          
           } else {
             //return error message, condition for coupon not met
             alert("Your Cart does not qualify for this coupon");
